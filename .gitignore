@@ -16,7 +16,6 @@
 
 # production
 /build
-
 # misc
 .DS_Store
 *.pem
@@ -209,3 +208,10 @@ fabric.properties
 /web/css/
 /web/js/
 
+
+### cache
+
+/back/vendor
+/back/var/cache
+
+/front/.next

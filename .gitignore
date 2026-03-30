@@ -215,3 +215,5 @@ fabric.properties
 /back/var/cache
 
 /front/.next
+
+/front/node_modules

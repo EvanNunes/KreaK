@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ProductController extends AbstractController
@@ -16,9 +17,16 @@ final class ProductController extends AbstractController
     ) {}
 
     #[Route('/api/products', name: 'api_products', methods: ['GET'])]
-    public function index(): JsonResponse
+    public function api_products(Request $request): JsonResponse
     {
-        $products = $this->productRepository->findAll();
+        $category = $request->query->get('category');
+
+        if ($category != null){
+            $products = $this->productRepository->findBy(['category' => $category]);
+        }
+        else {
+            $products = $this->productRepository->findAll();
+        }
 
         $data = array_map(function($product) {
             return [
@@ -33,4 +41,24 @@ final class ProductController extends AbstractController
 
         return new JsonResponse($data);
     }
+
+    #[Route('/api/products/{id}', name: 'api_products_id', methods: ['GET'])]
+    public function api_products_id(int $id): JsonResponse
+    {
+        $product = $this->productRepository->findBy(['id' => $id]) ;
+
+        $data = array_map(function($product) {
+            return [
+                'id' => $product->getId(),
+                'name' => $product->getName(),
+                'description' => $product->getDescription(),
+                'price' => $product->getPrice(),
+                'category' => $product->getCategory(),
+                'imageUrl' => $product->getImageUrl(),
+            ];
+        }, $product);
+
+        return new JsonResponse($data);
+    }
+
 }

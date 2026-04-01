@@ -1,0 +1,312 @@
+@use './variables' as *;
+
+// ─── Hero ────────────────────────────────────────────
+.hero {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 5rem 2.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  @include responsive($bp-lg) {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 4rem 1.5rem;
+  }
+}
+
+.heroContent {
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $terracotta;
+  margin-bottom: 1.2rem;
+}
+
+.heroTitle {
+  font-family: $font-display;
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  line-height: 1.08;
+  color: $charcoal;
+  margin-bottom: 1.5rem;
+
+  em {
+    font-style: italic;
+    color: $terracotta;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.1rem;
+  color: $warm-gray;
+  max-width: 44ch;
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+// ─── Boutons ─────────────────────────────────────────
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.8rem;
+  border-radius: $radius-xl;
+  background: $terracotta;
+  color: $white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $terracotta-dark;
+    color: $white;
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.8rem;
+  border-radius: $radius-xl;
+  background: transparent;
+  color: $charcoal;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 1.5px solid $warm-gray-light;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $terracotta;
+    color: $terracotta;
+  }
+}
+
+// ─── Décor hero ──────────────────────────────────────
+.heroDecor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include responsive($bp-lg) {
+    display: none;
+  }
+}
+
+.blob {
+  width: 420px;
+  height: 420px;
+  border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+  background: linear-gradient(135deg, $cream-dark 0%, $sage-light 60%, $terracotta-light 100%);
+  opacity: 0.5;
+  animation: blobFloat 8s ease-in-out infinite;
+}
+
+@keyframes blobFloat {
+  0%, 100% { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; transform: translateY(0); }
+  33%       { border-radius: 45% 55% 40% 60% / 60% 45% 55% 40%; transform: translateY(-14px); }
+  66%       { border-radius: 55% 45% 60% 40% / 45% 55% 45% 55%; transform: translateY(8px); }
+}
+
+// ─── Section aperçu ──────────────────────────────────
+.apercu {
+  padding: 6rem 0;
+  background: $white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.sectionHeader {
+  margin-bottom: 3rem;
+
+  h2 {
+    font-family: $font-display;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    color: $charcoal;
+    margin-bottom: 1rem;
+  }
+}
+
+.divider {
+  width: 48px;
+  height: 2px;
+  background: $terracotta;
+}
+
+// ─── Grille produits ─────────────────────────────────
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+
+  @include responsive($bp-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive($bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Card produit ─────────────────────────────────────
+.card {
+  background: $cream;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: block;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+.cardImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: $cream-dark;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.04);
+  }
+}
+
+.cardImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, $cream-dark, $sage-light);
+  opacity: 0.6;
+}
+
+.cardBody {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.cardCategory {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $sage-dark;
+  margin-bottom: 0.4rem;
+}
+
+.cardName {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: $charcoal;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.cardPrice {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $terracotta;
+}
+
+// ─── Skeleton loading ────────────────────────────────
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+
+  @include responsive($bp-lg) { grid-template-columns: repeat(2, 1fr); }
+  @include responsive($bp-sm) { grid-template-columns: 1fr; }
+}
+
+.skeleton {
+  height: 320px;
+  border-radius: $radius-lg;
+  background: linear-gradient(90deg, $cream-dark 25%, $cream 50%, $cream-dark 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// ─── Voir plus ───────────────────────────────────────
+.seeMore {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+// ─── Valeurs ─────────────────────────────────────────
+.values {
+  padding: 5rem 0;
+  background: $cream;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+
+    @include responsive($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+}
+
+.valueItem {
+  text-align: center;
+  padding: 2rem;
+
+  h3 {
+    font-family: $font-display;
+    font-size: 1.2rem;
+    margin: 1rem 0 0.6rem;
+    color: $charcoal;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $warm-gray;
+    line-height: 1.7;
+    max-width: 28ch;
+    margin: 0 auto;
+  }
+}
+
+.valueIcon {
+  font-size: 1.8rem;
+  color: $terracotta;
+  display: block;
+}

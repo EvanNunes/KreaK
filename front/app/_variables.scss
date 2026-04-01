@@ -1,0 +1,61 @@
+// ─── Couleurs ───────────────────────────────────────
+$cream:               #F7F3EE;
+$cream-dark:          #EDE6DB;
+$terracotta:          #C2694F;
+$terracotta-light:    #D4836A;
+$terracotta-dark:     #9E4E38;
+$sage:                #7A9E7E;
+$sage-light:          #A3BFA6;
+$sage-dark:           #527556;
+$charcoal:            #2C2C2A;
+$charcoal-soft:       #4A4845;
+$warm-gray:           #8C8880;
+$warm-gray-light:     #C4BFB8;
+$white:               #FDFAF7;
+
+// ─── Typographie ────────────────────────────────────
+$font-display:  'Playfair Display', Georgia, serif;
+$font-body:     'DM Sans', system-ui, sans-serif;
+
+// ─── Espacements ────────────────────────────────────
+$spacing-xs:   0.5rem;
+$spacing-sm:   1rem;
+$spacing-md:   2rem;
+$spacing-lg:   4rem;
+$spacing-xl:   6rem;
+
+// ─── Border radius ──────────────────────────────────
+$radius-sm:  6px;
+$radius-md:  12px;
+$radius-lg:  20px;
+$radius-xl:  32px;
+
+// ─── Shadows ────────────────────────────────────────
+$shadow-sm:  0 1px 3px rgba(44, 44, 42, 0.08);
+$shadow-md:  0 4px 16px rgba(44, 44, 42, 0.10);
+$shadow-lg:  0 8px 32px rgba(44, 44, 42, 0.12);
+
+// ─── Breakpoints ────────────────────────────────────
+$bp-sm:   640px;
+$bp-md:   768px;
+$bp-lg:   1024px;
+$bp-xl:   1280px;
+
+// ─── Mixins ─────────────────────────────────────────
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin responsive($bp) {
+  @media (max-width: $bp) {
+    @content;
+  }
+}

@@ -1,0 +1,28 @@
+@use '../app/variables' as *;
+
+.footer {
+  background: $charcoal;
+  color: $warm-gray-light;
+  padding: 3rem 2rem;
+  text-align: center;
+
+  .logo {
+    font-family: $font-display;
+    font-size: 2rem;
+    font-style: italic;
+    color: $cream;
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    color: $warm-gray;
+    margin-bottom: 1.5rem;
+  }
+
+  .copy {
+    font-size: 0.8rem;
+    color: $warm-gray;
+    opacity: 0.6;
+  }
+}

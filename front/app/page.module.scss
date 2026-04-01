@@ -310,3 +310,34 @@
   color: $terracotta;
   display: block;
 }
+
+
+.filterBar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filterChip {
+  padding: 0.45rem 1.2rem;
+  border-radius: $radius-xl;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1.5px solid $warm-gray-light;
+  background: transparent;
+  color: $charcoal-soft;
+  cursor: pointer;
+  transition: all 0.18s ease;
+
+  &:hover {
+    border-color: $terracotta;
+    color: $terracotta;
+  }
+
+  &.active {
+    background: $terracotta;
+    border-color: $terracotta;
+    color: $white;
+  }
+}

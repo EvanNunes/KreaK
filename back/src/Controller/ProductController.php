@@ -45,20 +45,20 @@ final class ProductController extends AbstractController
     #[Route('/api/products/{id}', name: 'api_products_id', methods: ['GET'])]
     public function api_products_id(int $id): JsonResponse
     {
-        $product = $this->productRepository->findBy(['id' => $id]) ;
+        $product = $this->productRepository->find($id);
 
-        $data = array_map(function($product) {
-            return [
-                'id' => $product->getId(),
-                'name' => $product->getName(),
-                'description' => $product->getDescription(),
-                'price' => $product->getPrice(),
-                'category' => $product->getCategory(),
-                'imageUrl' => $product->getImageUrl(),
-            ];
-        }, $product);
+        if (!$product) {
+            return new JsonResponse(['error' => 'Produit non trouvé'], 404);
+        }
 
-        return new JsonResponse($data);
+        return new JsonResponse([
+            'id' => $product->getId(),
+            'name' => $product->getName(),
+            'description' => $product->getDescription(),
+            'price' => $product->getPrice(),
+            'category' => $product->getCategory(),
+            'imageUrl' => $product->getImageUrl(),
+        ]);
     }
 
 }
